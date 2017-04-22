@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## Bloc Frontend Project Starter
 
 A starter application for student projects in Bloc's [Frontend Web Development Course](https://www.bloc.io/frontend-development-bootcamp).
@@ -105,3 +106,6 @@ To reference any other assets, like the music in Bloc Jams, use the path `assets
 ### Difference between Pages and Templates
 
 The `templates` directory should hold any HTML files used as templates in Angular states configured by UI Router. All other HTML files belong in the `pages` directory.
+=======
+# bloc-jams-angular
+>>>>>>> 4e0de58b67eeac2e9f0d245c5bfce0c5ee4662b3
