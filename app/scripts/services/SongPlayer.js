@@ -21,8 +21,7 @@
     */
     var setSong = function(song) {
       if (currentBuzzObject) {
-        currentBuzzObject.stop();
-        SongPlayer.currentSong.playing = null;
+        stopSong(song);
       }
 
       currentBuzzObject = new buzz.sound(song.audioUrl, {
@@ -41,6 +40,16 @@
     var playSong = function(song) {
       currentBuzzObject.play();
       song.playing = true;
+    }
+
+    /**
+    *@function stopSong
+    *@desc Stops playing audio file currentBuzzObject
+    *@param {Object} song
+    */
+    var stopSong = function(song) {
+      currentBuzzObject.stop();
+      SongPlayer.currentSong.playing = null;
     }
 
     /**
@@ -91,7 +100,7 @@
 
     /**
     *@function SongPlayer.previous
-    *@desc Gets the index of the currently playing song and increases the index by one.  If index < 0 the currently
+    *@desc Gets the index of the currently playing song and decreases the index by one.  If index < 0 the currently
     *playing song will stop and the value will be sent to the first song in the list of songs.  Otherwise the previous
     *song will begin to play
     */
@@ -100,8 +109,25 @@
       currentSongIndex--;
 
       if (currentSongIndex < 0) {
-        currentBuzzObject.stop();
-        SongPlayer.currentSong.playing = null;
+        stopSong(song);
+      } else {
+        var song = currentAlbum.song[currentSongIndex];
+        setSong(song);
+        playSong(song);
+      }
+    };
+
+    /**
+    *@function SongPlayer.next
+    *@desc Gets the index of the currently playing song and increases the index by one.  If index > the list of songs, the currently
+    *playing song will stop and the value will be sent to the last song in the list of songs.  Otherwise the next song will begin to play
+    */
+    SongPlayer.next = function() {
+      var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+      currentSongIndex++;
+
+      if (currentSongIndex > currentAlbum.song.length - 1) {
+        stopSong(song);
       } else {
         var song = currentAlbum.song[currentSongIndex];
         setSong(song);
