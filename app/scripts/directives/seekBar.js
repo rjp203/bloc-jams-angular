@@ -53,6 +53,15 @@
         };
 
         /**
+        *@function scope.thumbStyle
+        *@desc Updates seek bar thumb based on location of user's click or drag on seek bar
+        *@returns {Number}
+        */
+        scope.thumbStyle = function() {
+          return {left: percentString()};
+        };
+
+        /**
         *@function scope.onClickSeekBar
         *@desc Updates seek bar value based on seek bar width and location of user's click on seek bar
         *@param {Event} event
