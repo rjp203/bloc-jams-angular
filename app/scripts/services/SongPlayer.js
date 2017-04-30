@@ -39,6 +39,7 @@
       SongPlayer.currentSong = song;
     };
 
+
     /**
     *@function playSong
     *@desc Plays audio file currentBuzzObject
@@ -80,6 +81,12 @@
     * @type {Number}
     */
     SongPlayer.currentTime = null;
+
+    /**
+    * @desc Sets starting percentage of volume of currently playing song at 80%
+    * @type {Number}
+    */
+    SongPlayer.volume = 80;
 
     /**
     *@function SongPlayer.play
@@ -150,12 +157,23 @@
 
     /**
     * @function setCurrentTime
-    * @desc Set current time (in seconds) of currently playing song
+    * @desc Sets current time (in seconds) of currently playing song
     * @param {Number} time
     */
     SongPlayer.setCurrentTime = function(time) {
       if (currentBuzzObject) {
         currentBuzzObject.setTime(time);
+      }
+    };
+
+    /**
+    * @function setVolume
+    * @desc Sets percentage of volume of currently playing song
+    * @param {Number} volume
+    */
+    SongPlayer.setVolume = function(volume) {
+      if (currentBuzzObject) {
+        currentBuzzObject.setVolume(volume);
       }
     };
 
